@@ -60,16 +60,24 @@ jobs:
         working-directory: ${{ steps.workspace.outputs.workdir }}
         run: npm test
 
+      - name: Setup GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build static export
         working-directory: ${{ steps.workspace.outputs.workdir }}
         env:
           EXPORT: "true"
-          NEXT_PUBLIC_BASE_PATH: "/olenna"
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_CUSTOMER_PWA_URL: "https://shop.olenna.in"
-        run: npm run build
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
+        run: |
+          npm run build
+          # Ensure .nojekyll is present in the output directory
+          touch out/.nojekyll
+          # If 404/index.html was produced, ensure top-level 404.html exists for GitHub Pages
+          if [ -f "out/404/index.html" ] && [ ! -f "out/404.html" ]; then
+            cp out/404/index.html out/404.html
+          fi
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
