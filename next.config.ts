@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
+const isExport = process.env.EXPORT === "true" || process.env.GITHUB_ACTIONS === "true";
+
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  output: isExport ? "export" : undefined,
+  images: {
+    unoptimized: true,
+  },
   turbopack: {
     rules: {
       "*.css": {

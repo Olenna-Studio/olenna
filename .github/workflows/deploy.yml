@@ -1,0 +1,80 @@
+name: Deploy Olenna Website to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Permissions required to deploy to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Detect whether project root is at top-level or inside olenna_web/
+      - name: Detect workspace directory
+        id: workspace
+        run: |
+          if [ -f "olenna_web/package.json" ]; then
+            echo "workdir=olenna_web" >> $GITHUB_OUTPUT
+            echo "lockfile=olenna_web/package-lock.json" >> $GITHUB_OUTPUT
+            echo "outdir=olenna_web/out" >> $GITHUB_OUTPUT
+          else
+            echo "workdir=." >> $GITHUB_OUTPUT
+            echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
+            echo "outdir=out" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+          cache-dependency-path: ${{ steps.workspace.outputs.lockfile }}
+
+      - name: Install dependencies
+        working-directory: ${{ steps.workspace.outputs.workdir }}
+        run: npm ci
+
+      - name: Run ESLint
+        working-directory: ${{ steps.workspace.outputs.workdir }}
+        run: npm run lint
+
+      - name: Run Unit Tests
+        working-directory: ${{ steps.workspace.outputs.workdir }}
+        run: npm test
+
+      - name: Build static export
+        working-directory: ${{ steps.workspace.outputs.workdir }}
+        env:
+          EXPORT: "true"
+          NEXT_PUBLIC_CUSTOMER_PWA_URL: "https://shop.olenna.in"
+        run: npm run build
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ steps.workspace.outputs.outdir }}
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { getStoreRepository, getCategoryRepository } from "@/lib/repositories";
 
+export const dynamic = "force-static";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://olenna.in";
   const storeRepo = getStoreRepository();
