@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blush-50: #FAF1F4;
+  --color-brand-blush-100: #F5E3EA;
+  --color-brand-blush-200: #EED5E0;
+  
+  --color-brand-mauve-100: #EFE4EC;
+  --color-brand-mauve-200: #DCC5D8;
+  --color-brand-mauve-400: #C5A5BF;
+  
+  --color-brand-ivory-50: #FFFAF7;
+  --color-brand-ivory-100: #FAF5F2;
+  --color-brand-ivory-200: #F5EFEA;
+  
+  --color-brand-champagne-100: #F2E8DE;
+  --color-brand-champagne-200: #DFC7B0;
+  --color-brand-champagne-400: #C4A181;
+  --color-brand-champagne-600: #9E7958;
+  
+  --color-brand-plum-700: #6D4C5E;
+  --color-brand-plum-800: #593D4E;
+  --color-brand-plum-900: #493541;
+  --color-brand-plum-950: #33232D;
+
+  --color-brand-text-primary: #261C22;
+  --color-brand-text-secondary: #5C4C56;
+  --color-brand-text-muted: #8E7A87;
+
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --background: #FFFAF7;
+  --foreground: #261C22;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #493541;
+  outline-offset: 2px;
+}
+
+/* Smooth transition defaults */
+a, button {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
