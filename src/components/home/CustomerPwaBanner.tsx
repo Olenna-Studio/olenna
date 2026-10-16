@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { CustomerPwaBannerContent } from "@/lib/models/content";
 import { Button } from "@/components/ui/Button";
+import { assetPath } from "@/lib/utils/assetPath";
 
 interface CustomerPwaBannerProps {
   content: CustomerPwaBannerContent;
@@ -21,7 +22,7 @@ export function CustomerPwaBanner({ content }: CustomerPwaBannerProps) {
             {/* Left Photo: Gift Box */}
             <div className="md:col-span-5 relative h-52 sm:h-64 md:h-72 w-full bg-brand-blush-100">
               <Image
-                src={content.image}
+                src={assetPath(content.image)}
                 alt={content.imageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, 42vw"

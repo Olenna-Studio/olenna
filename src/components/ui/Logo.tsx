@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils/cn";
+import { assetPath } from "@/lib/utils/assetPath";
 
 export interface LogoProps {
   className?: string;
@@ -50,7 +51,7 @@ export function Logo({
   };
 
   const currentDim = dimensions[variant][size];
-  const src = assetSources[variant];
+  const src = assetPath(assetSources[variant]);
 
   return (
     <Link

@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { StoreOpeningHours } from "@/components/stores/StoreOpeningHours";
 import { StoreJsonLd } from "@/components/seo/JsonLd";
+import { assetPath } from "@/lib/utils/assetPath";
 
 interface StorePageProps {
   params: Promise<{ slug: string }>;
@@ -173,7 +174,7 @@ export default async function StoreDetailPage({ params }: StorePageProps) {
             <div className="lg:col-span-5 relative min-h-64 sm:min-h-80 lg:min-h-full w-full bg-brand-blush-100">
               {store.image ? (
                 <Image
-                  src={store.image}
+                  src={assetPath(store.image)}
                   alt={store.name}
                   fill
                   priority

@@ -64,6 +64,7 @@ jobs:
         working-directory: ${{ steps.workspace.outputs.workdir }}
         env:
           EXPORT: "true"
+          NEXT_PUBLIC_BASE_PATH: "/olenna"
           NEXT_PUBLIC_CUSTOMER_PWA_URL: "https://shop.olenna.in"
         run: npm run build
 

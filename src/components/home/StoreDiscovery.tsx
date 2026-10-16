@@ -5,6 +5,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import { StoreDiscoveryContent } from "@/lib/models/content";
 import { Store } from "@/lib/models/store";
 import { Button } from "@/components/ui/Button";
+import { assetPath } from "@/lib/utils/assetPath";
 
 interface StoreDiscoveryProps {
   content: StoreDiscoveryContent;
@@ -75,7 +76,7 @@ export function StoreDiscovery({
             {/* Right Store Interior Photo */}
             <div className="lg:col-span-7 relative h-64 sm:h-80 lg:h-96 w-full">
               <Image
-                src={content.image}
+                src={assetPath(content.image)}
                 alt={content.imageAlt}
                 fill
                 sizes="(max-width: 1024px) 100vw, 58vw"

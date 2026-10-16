@@ -5,6 +5,7 @@ import { MapPin, Phone, Navigation, ArrowRight, Sparkles } from "lucide-react";
 import { Store } from "@/lib/models/store";
 import { StoreOpeningHours } from "./StoreOpeningHours";
 import { Badge } from "@/components/ui/Badge";
+import { assetPath } from "@/lib/utils/assetPath";
 
 interface StoreCardProps {
   store: Store;
@@ -17,7 +18,7 @@ export function StoreCard({ store }: StoreCardProps) {
       <div className="relative h-44 sm:h-48 w-full bg-brand-blush-100 overflow-hidden">
         {store.image ? (
           <Image
-            src={store.image}
+            src={assetPath(store.image)}
             alt={store.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"

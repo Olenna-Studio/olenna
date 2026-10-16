@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowUpRight, CheckCircle2, MapPin, Sparkles } from "lucide-
 import { getCategoryRepository, getSiteSettingsRepository } from "@/lib/repositories";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { assetPath } from "@/lib/utils/assetPath";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -128,7 +129,7 @@ export default async function CategoryDetailPage({ params }: CategoryPageProps) 
             {/* Category Visual */}
             <div className="lg:col-span-5 relative min-h-72 sm:min-h-96 w-full bg-brand-blush-100">
               <Image
-                src={category.image}
+                src={assetPath(category.image)}
                 alt={category.name}
                 fill
                 priority

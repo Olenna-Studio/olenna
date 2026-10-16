@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Category } from "@/lib/models/category";
+import { assetPath } from "@/lib/utils/assetPath";
 
 interface CategoryCardProps {
   category: Category;
@@ -19,7 +20,7 @@ export function CategoryCard({ category }: CategoryCardProps) {
       {/* Category Image Box */}
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-brand-blush-100 mb-3">
         <Image
-          src={category.image}
+          src={assetPath(category.image)}
           alt={category.name}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 200px"

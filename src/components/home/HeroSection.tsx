@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { HeroSectionContent } from "@/lib/models/content";
 import { Button } from "@/components/ui/Button";
+import { assetPath } from "@/lib/utils/assetPath";
 
 interface HeroSectionProps {
   content: HeroSectionContent;
@@ -120,7 +121,7 @@ export function HeroSection({ content }: HeroSectionProps) {
           <div className="lg:col-span-6 order-1 lg:order-2 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-lg lg:max-w-none aspect-[4/3] sm:aspect-[16/11] lg:aspect-[5/4] rounded-2xl overflow-hidden shadow-xl ring-1 ring-brand-plum-900/10 bg-brand-blush-100">
               <Image
-                src={currentSlide.image}
+                src={assetPath(currentSlide.image)}
                 alt={currentSlide.imageAlt}
                 fill
                 priority
