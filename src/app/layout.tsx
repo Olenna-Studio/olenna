@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/logo/olenna-logo-full.png",
-        width: 1070,
-        height: 657,
-        alt: "Olenna — Luxury Beauty, Fashion & Lifestyle",
+        width: 1057,
+        height: 853,
+        alt: "Olenna Studiox — Luxury Beauty, Fashion & Lifestyle",
       },
     ],
   },

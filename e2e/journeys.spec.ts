@@ -77,7 +77,7 @@ test.describe("Olenna Website Key Journeys", () => {
 
     // Back button returns to directory
     await page.click("text=Back to All Stores");
-    await expect(page).toHaveURL(/\/stores$/);
+    await expect(page).toHaveURL(/\/stores\/?$/);
   });
 
   test("About page conveys brand philosophy and retail standards", async ({ page }) => {

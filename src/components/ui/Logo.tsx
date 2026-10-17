@@ -22,24 +22,24 @@ export function Logo({
   // Dimension definitions for each variant & size
   const dimensions = {
     horizontal: {
-      sm: { width: 140, height: 30, className: "h-7 w-auto" },
-      md: { width: 180, height: 39, className: "h-9 sm:h-10 w-auto" },
-      lg: { width: 220, height: 47, className: "h-11 sm:h-12 w-auto" },
+      sm: { width: 140, height: 31, className: "h-7 w-auto" },
+      md: { width: 180, height: 40, className: "h-9 sm:h-10 w-auto" },
+      lg: { width: 220, height: 48, className: "h-11 sm:h-12 w-auto" },
     },
     stacked: {
-      sm: { width: 110, height: 68, className: "w-24 h-auto" },
-      md: { width: 150, height: 92, className: "w-32 sm:w-36 h-auto" },
-      lg: { width: 190, height: 117, className: "w-40 sm:w-48 h-auto" },
+      sm: { width: 110, height: 89, className: "w-24 h-auto" },
+      md: { width: 150, height: 121, className: "w-32 sm:w-36 h-auto" },
+      lg: { width: 190, height: 153, className: "w-40 sm:w-48 h-auto" },
     },
     wordmark: {
-      sm: { width: 120, height: 29, className: "h-7 w-auto" },
-      md: { width: 155, height: 37, className: "h-8 sm:h-9 w-auto" },
-      lg: { width: 190, height: 46, className: "h-10 sm:h-11 w-auto" },
+      sm: { width: 120, height: 36, className: "h-7 w-auto" },
+      md: { width: 155, height: 47, className: "h-8 sm:h-9 w-auto" },
+      lg: { width: 190, height: 57, className: "h-10 sm:h-11 w-auto" },
     },
     emblem: {
-      sm: { width: 32, height: 27, className: "h-7 w-auto" },
-      md: { width: 44, height: 37, className: "h-9 w-auto" },
-      lg: { width: 56, height: 48, className: "h-12 w-auto" },
+      sm: { width: 32, height: 29, className: "h-7 w-auto" },
+      md: { width: 44, height: 39, className: "h-9 w-auto" },
+      lg: { width: 56, height: 50, className: "h-12 w-auto" },
     },
   };
 
