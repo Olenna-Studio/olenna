@@ -73,12 +73,21 @@ export default async function ContactPage() {
                       <p className="font-medium text-brand-plum-900 text-xs uppercase tracking-wider">
                         Call Concierge
                       </p>
-                      <a
-                        href={`tel:${settings.contactDetails.primaryPhone}`}
-                        className="hover:text-brand-plum-900 transition-colors"
-                      >
-                        {settings.contactDetails.phoneDisplay}
-                      </a>
+                      <div className="flex items-center gap-1.5">
+                        <a
+                          href="tel:9741424695"
+                          className="hover:text-brand-plum-900 transition-colors"
+                        >
+                          9741424695
+                        </a>
+                        <span>|</span>
+                        <a
+                          href="tel:08754443777"
+                          className="hover:text-brand-plum-900 transition-colors"
+                        >
+                          08754443777
+                        </a>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -109,24 +118,24 @@ export default async function ContactPage() {
               {/* Verified Status Tag */}
               <div className="pt-4 border-t border-brand-plum-900/10 text-xs text-brand-text-muted flex items-center gap-1.5">
                 <Compass className="w-3.5 h-3.5 text-brand-plum-700" />
-                <span>Operating physical boutiques across Chennai, Bengaluru, and Hyderabad.</span>
+                <span>Physical store & workspace in progress in Rajajinagar, Bangalore. Opening soon!</span>
               </div>
             </div>
 
             {/* In-Store Styling Notice Card */}
             <div className="bg-[#FAF1F4] p-6 sm:p-8 rounded-2xl border border-brand-plum-900/10 space-y-3">
               <h4 className="font-serif text-lg text-brand-plum-900">
-                Visiting Our Boutiques
+                Store & Workspace In Progress
               </h4>
               <p className="text-xs sm:text-sm text-brand-text-secondary leading-relaxed font-light">
-                Looking to experience our bridal jewellery, festive sarees, or personalized tailoring in person? Walk-ins are always welcomed, or you may reserve an exclusive consultation.
+                Our physical store in Rajajinagar, Bangalore is currently in progress and opening soon. Once onboarded, our workspace and shop hours will be 10:00 AM to 10:00 PM, Monday to Sunday.
               </p>
               <div className="pt-2">
                 <Link
                   href="/stores"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-plum-900 hover:underline"
                 >
-                  <span>Explore store directory and timings →</span>
+                  <span>View store updates and timings →</span>
                 </Link>
               </div>
             </div>

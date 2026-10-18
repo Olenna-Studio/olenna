@@ -157,10 +157,10 @@ export default async function AboutPage() {
                 Physical Experience
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif leading-tight">
-                Experience Olenna in Chennai, Bengaluru, and Hyderabad.
+                Experience Olenna Studio in Rajajinagar, Bangalore.
               </h2>
               <p className="text-sm sm:text-base text-brand-mauve-100 font-light leading-relaxed">
-                Step into our warm boutiques for personalized bridal consultations, jewellery try-ons, and master tailoring assistance.
+                Our physical store and workspace is currently in progress and opening soon! Designed for modern women, with workspace and store hours from 10:00 AM to 10:00 PM, Monday to Sunday.
               </p>
               <div className="pt-4">
                 <Button
@@ -170,7 +170,7 @@ export default async function AboutPage() {
                   className="bg-brand-champagne-400 text-brand-plum-950 hover:bg-brand-champagne-200"
                 >
                   <Compass className="w-4 h-4 mr-2" />
-                  <span>Explore Store Directory</span>
+                  <span>View Store Updates</span>
                 </Button>
               </div>
             </div>

@@ -19,12 +19,7 @@ export function OrganizationJsonLd({
     url,
     logo,
     description:
-      "A premium multi-category retail brand celebrating beauty, timeless fashion, ethnic wear, imitation jewellery, accessories, personal care, and tailoring supplies.",
-    sameAs: [
-      "https://instagram.com/olenna_official",
-      "https://facebook.com/olennaofficial",
-      "https://pinterest.com/olennaofficial",
-    ],
+      "A premium multi-category retail brand and workspace celebrating ladies & women's beauty, timeless fashion, ethnic wear, imitation jewellery, accessories, personal care, and tailoring supplies.",
   };
 
   return (

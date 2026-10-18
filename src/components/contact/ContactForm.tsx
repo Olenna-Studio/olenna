@@ -113,8 +113,8 @@ export function ContactForm({ stores = [] }: ContactFormProps) {
           </div>
           <p className="text-xs sm:text-sm text-brand-text-secondary">
             Thank you, <strong>{formData.fullName}</strong>. Your enquiry details have passed client-side validation. Because this public frontend is currently running in decoupled prototype mode without an active admin/CRM endpoint (<code className="bg-white/60 px-1 py-0.5 rounded text-[11px]">NEXT_PUBLIC_CONTACT_API_URL</code>), submissions are logged to this session. For immediate assistance, please reach our concierge at{" "}
-            <a href="mailto:care@olenna.in" className="underline font-medium text-brand-plum-900">
-              care@olenna.in
+            <a href="mailto:olennastudiox@gmail.com" className="underline font-medium text-brand-plum-900">
+              olennastudiox@gmail.com
             </a>
             .
           </p>
@@ -130,7 +130,7 @@ export function ContactForm({ stores = [] }: ContactFormProps) {
           <div className="text-sm">
             <p className="font-medium">Could not transmit enquiry</p>
             <p className="text-xs text-red-700 mt-0.5">
-              Please check your network connection or email us directly at care@olenna.in.
+              Please check your network connection or email us directly at olennastudiox@gmail.com.
             </p>
           </div>
         </div>

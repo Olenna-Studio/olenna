@@ -40,30 +40,34 @@ export function AnnouncementBar({
             <Compass className="w-3.5 h-3.5" />
             <span>{announcement.storeLocatorLabel}</span>
           </Link>
-          <span className="text-white/20">|</span>
-          <div className="flex items-center gap-2.5">
-            <span className="text-[11px] text-brand-mauve-200">Follow us</span>
-            {settings.socialLinks.map((social) => (
-              <a
-                key={social.platform}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Follow Olenna on ${social.label}`}
-                className="hover:text-white transition-colors"
-              >
-                {social.platform === "instagram" && (
-                  <InstagramIcon className="w-3.5 h-3.5" />
-                )}
-                {social.platform === "facebook" && (
-                  <FacebookIcon className="w-3.5 h-3.5" />
-                )}
-                {social.platform === "pinterest" && (
-                  <PinterestIcon className="w-3.5 h-3.5" />
-                )}
-              </a>
-            ))}
-          </div>
+          {settings.socialLinks && settings.socialLinks.length > 0 && (
+            <>
+              <span className="text-white/20">|</span>
+              <div className="flex items-center gap-2.5">
+                <span className="text-[11px] text-brand-mauve-200">Follow us</span>
+                {settings.socialLinks.map((social) => (
+                  <a
+                    key={social.platform}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Follow Olenna on ${social.label}`}
+                    className="hover:text-white transition-colors"
+                  >
+                    {social.platform === "instagram" && (
+                      <InstagramIcon className="w-3.5 h-3.5" />
+                    )}
+                    {social.platform === "facebook" && (
+                      <FacebookIcon className="w-3.5 h-3.5" />
+                    )}
+                    {social.platform === "pinterest" && (
+                      <PinterestIcon className="w-3.5 h-3.5" />
+                    )}
+                  </a>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -39,51 +39,110 @@ describe("Category Repository", () => {
   });
 });
 
+const testSampleStores = [
+  {
+    id: "test-chennai",
+    slug: "chennai-test",
+    name: "Olenna Flagship — Chennai",
+    addressLines: ["Plot 42"],
+    locality: "Anna Nagar",
+    city: "Chennai",
+    state: "Tamil Nadu",
+    postalCode: "600040",
+    country: "India",
+    isFeatured: true,
+    isPublished: true,
+    displayOrder: 1,
+    openingHours: [],
+  },
+  {
+    id: "test-bengaluru",
+    slug: "bengaluru-test",
+    name: "Olenna Studio — Bengaluru",
+    addressLines: ["540, 12th Main"],
+    locality: "Indiranagar",
+    city: "Bengaluru",
+    state: "Karnataka",
+    postalCode: "560038",
+    country: "India",
+    isFeatured: false,
+    isPublished: true,
+    displayOrder: 2,
+    openingHours: [],
+  },
+  {
+    id: "test-draft",
+    slug: "draft-store",
+    name: "Olenna Draft",
+    addressLines: ["Draft Road"],
+    locality: "Draft",
+    city: "Hyderabad",
+    state: "Telangana",
+    postalCode: "500033",
+    country: "India",
+    isFeatured: false,
+    isPublished: false,
+    displayOrder: 3,
+    openingHours: [],
+  },
+];
+
 describe("Store Repository", () => {
-  it("returns only published stores sorted by displayOrder", async () => {
+  it("filters out unpublished / in-progress stores in default mock data", async () => {
     const repo = new MockStoreRepository();
     const stores = await repo.getPublishedStores();
 
-    expect(stores.length).toBeGreaterThan(0);
+    // Default mock stores are currently in progress / opening soon
+    expect(stores.length).toBe(0);
     expect(stores.every((s) => s.isPublished)).toBe(true);
+  });
 
-    // Ensure draft store 'coimbatore-rs-puram' is excluded
-    const draft = stores.find((s) => s.slug === "coimbatore-rs-puram");
+  it("returns only published stores sorted by displayOrder when stores exist", async () => {
+    const repo = new MockStoreRepository(testSampleStores);
+    const stores = await repo.getPublishedStores();
+
+    expect(stores.length).toBe(2);
+    expect(stores.every((s) => s.isPublished)).toBe(true);
+    expect(stores[0].displayOrder).toBeLessThanOrEqual(stores[1].displayOrder);
+
+    // Ensure draft store is excluded
+    const draft = stores.find((s) => s.slug === "draft-store");
     expect(draft).toBeUndefined();
   });
 
   it("returns featured stores only", async () => {
-    const repo = new MockStoreRepository();
+    const repo = new MockStoreRepository(testSampleStores);
     const featured = await repo.getFeaturedStores();
 
-    expect(featured.length).toBeGreaterThan(0);
+    expect(featured.length).toBe(1);
+    expect(featured[0].slug).toBe("chennai-test");
     expect(featured.every((s) => s.isFeatured)).toBe(true);
   });
 
   it("finds store by slug", async () => {
-    const repo = new MockStoreRepository();
-    const store = await repo.getStoreBySlug("chennai-anna-nagar");
+    const repo = new MockStoreRepository(testSampleStores);
+    const store = await repo.getStoreBySlug("chennai-test");
 
     expect(store).not.toBeNull();
-    expect(store?.name).toContain("Anna Nagar");
+    expect(store?.name).toContain("Chennai");
     expect(store?.city).toBe("Chennai");
   });
 
   it("filters stores by city", async () => {
-    const repo = new MockStoreRepository();
+    const repo = new MockStoreRepository(testSampleStores);
     const chennaiStores = await repo.getStoresByCity("Chennai");
 
-    expect(chennaiStores.length).toBeGreaterThan(0);
+    expect(chennaiStores.length).toBe(1);
     expect(chennaiStores.every((s) => s.city.toLowerCase() === "chennai")).toBe(true);
   });
 
   it("returns unique sorted list of cities", async () => {
-    const repo = new MockStoreRepository();
+    const repo = new MockStoreRepository(testSampleStores);
     const cities = await repo.getCities();
 
-    expect(cities).toContain("Chennai");
     expect(cities).toContain("Bengaluru");
-    expect(cities).toContain("Hyderabad");
+    expect(cities).toContain("Chennai");
+    expect(cities).not.toContain("Hyderabad"); // Unpublished draft excluded
   });
 });
 
@@ -100,12 +159,14 @@ describe("Site Content Repository", () => {
 });
 
 describe("Site Settings Repository", () => {
-  it("loads site settings with valid customer PWA url", async () => {
+  it("loads site settings with valid customer PWA url and updated contact details", async () => {
     const repo = new MockSiteSettingsRepository();
     const settings = await repo.getSiteSettings();
 
     expect(settings.brandName).toBe("Olenna");
     expect(settings.customerPwaUrl).toMatch(/^https?:\/\//);
     expect(settings.mainNavigation.length).toBe(4);
+    expect(settings.contactDetails.primaryEmail).toBe("olennastudiox@gmail.com");
+    expect(settings.contactDetails.phoneDisplay).toContain("9741424695");
   });
 });

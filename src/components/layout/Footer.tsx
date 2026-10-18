@@ -9,10 +9,16 @@ interface FooterProps {
 }
 
 export function Footer({ settings }: FooterProps) {
+  const hasSocialLinks = settings.socialLinks && settings.socialLinks.length > 0;
+
   return (
     <footer className="bg-[#FAF3F0] text-brand-text-primary border-t border-brand-plum-900/10 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-brand-plum-900/10">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 ${
+            hasSocialLinks ? "lg:grid-cols-5" : "lg:grid-cols-4"
+          } gap-10 lg:gap-8 pb-12 border-b border-brand-plum-900/10`}
+        >
           {/* Brand Info */}
           <div className="lg:col-span-1 space-y-3">
             <Logo size="md" variant="horizontal" />
@@ -112,34 +118,36 @@ export function Footer({ settings }: FooterProps) {
           </div>
 
           {/* Connect With Us */}
-          <div className="space-y-3">
-            <h3 className="text-xs font-semibold tracking-wider text-brand-plum-900 uppercase">
-              Connect With Us
-            </h3>
-            <div className="flex items-center gap-3">
-              {settings.socialLinks.map((social) => (
-                <a
-                  key={social.platform}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Olenna on ${social.label}`}
-                  className="w-8 h-8 rounded-full bg-brand-mauve-200/50 flex items-center justify-center text-brand-plum-900 hover:bg-brand-plum-900 hover:text-white transition-colors"
-                >
-                  {social.platform === "instagram" && (
-                    <InstagramIcon className="w-4 h-4" />
-                  )}
-                  {social.platform === "facebook" && (
-                    <FacebookIcon className="w-4 h-4" />
-                  )}
-                  {social.platform === "pinterest" && (
-                    <PinterestIcon className="w-4 h-4" />
-                  )}
-                </a>
-              ))}
+          {hasSocialLinks && (
+            <div className="space-y-3">
+              <h3 className="text-xs font-semibold tracking-wider text-brand-plum-900 uppercase">
+                Connect With Us
+              </h3>
+              <div className="flex items-center gap-3">
+                {settings.socialLinks.map((social) => (
+                  <a
+                    key={social.platform}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Olenna on ${social.label}`}
+                    className="w-8 h-8 rounded-full bg-brand-mauve-200/50 flex items-center justify-center text-brand-plum-900 hover:bg-brand-plum-900 hover:text-white transition-colors"
+                  >
+                    {social.platform === "instagram" && (
+                      <InstagramIcon className="w-4 h-4" />
+                    )}
+                    {social.platform === "facebook" && (
+                      <FacebookIcon className="w-4 h-4" />
+                    )}
+                    {social.platform === "pinterest" && (
+                      <PinterestIcon className="w-4 h-4" />
+                    )}
+                  </a>
+                ))}
+              </div>
+              <p className="text-xs text-brand-text-muted">Follow our journey</p>
             </div>
-            <p className="text-xs text-brand-text-muted">Follow our journey</p>
-          </div>
+          )}
         </div>
 
         {/* Bottom copyright & legal */}

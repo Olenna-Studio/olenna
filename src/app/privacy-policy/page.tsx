@@ -43,8 +43,8 @@ export default function PrivacyPolicyPage() {
           </h2>
           <p>
             If you have questions regarding this policy, please email us at{" "}
-            <a href="mailto:care@olenna.in" className="text-brand-plum-900 underline font-medium">
-              care@olenna.in
+            <a href="mailto:olennastudiox@gmail.com" className="text-brand-plum-900 underline font-medium">
+              olennastudiox@gmail.com
             </a>
             .
           </p>

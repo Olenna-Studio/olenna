@@ -142,6 +142,26 @@ export function StoreDirectoryClient({
             <StoreCard key={store.id} store={store} />
           ))}
         </div>
+      ) : initialStores.length === 0 ? (
+        <div className="text-center py-16 px-6 bg-white rounded-3xl border border-brand-plum-900/10 max-w-xl mx-auto space-y-4">
+          <div className="w-14 h-14 rounded-full bg-brand-blush-100 mx-auto flex items-center justify-center text-brand-plum-700">
+            <MapPin className="w-7 h-7" />
+          </div>
+          <h3 className="font-serif text-2xl text-brand-plum-900">
+            Store In Progress — Opening Soon!
+          </h3>
+          <p className="text-sm text-brand-text-secondary font-light leading-relaxed">
+            Our physical store and workspace in <strong>Rajajinagar, Bangalore</strong> is currently under preparation. Once open, timings will be <strong>10:00 AM to 10:00 PM (Monday to Sunday)</strong>.
+          </p>
+          <p className="text-xs text-brand-text-muted">
+            For questions or styling enquiries, please email{" "}
+            <a href="mailto:olennastudiox@gmail.com" className="text-brand-plum-900 underline font-medium">
+              olennastudiox@gmail.com
+            </a>{" "}
+            or call{" "}
+            <span className="font-medium text-brand-plum-900">9741424695 | 08754443777</span>.
+          </p>
+        </div>
       ) : (
         <div className="text-center py-16 px-4 bg-white rounded-2xl border border-brand-plum-900/10 max-w-lg mx-auto space-y-4">
           <div className="w-12 h-12 rounded-full bg-brand-blush-100 mx-auto flex items-center justify-center text-brand-plum-700">
