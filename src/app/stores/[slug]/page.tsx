@@ -27,6 +27,10 @@ interface StorePageProps {
 export async function generateStaticParams() {
   const storeRepo = getStoreRepository();
   const stores = await storeRepo.getPublishedStores();
+  if (stores.length === 0) {
+    // Next.js with output: 'export' requires at least one route parameter
+    return [{ slug: "_placeholder" }];
+  }
   return stores.map((store) => ({
     slug: store.slug,
   }));

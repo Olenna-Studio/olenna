@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
-import Link from "next/link";
-import { MapPin, Clock, Phone, Mail, Sparkles, ArrowRight } from "lucide-react";
+import { MapPin, Clock, Phone, Sparkles, ArrowRight } from "lucide-react";
 import { getStoreRepository, getSiteSettingsRepository } from "@/lib/repositories";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";

@@ -15,6 +15,9 @@ interface CategoryPageProps {
 export async function generateStaticParams() {
   const categoryRepo = getCategoryRepository();
   const categories = await categoryRepo.getActiveCategories();
+  if (categories.length === 0) {
+    return [{ slug: "_placeholder" }];
+  }
   return categories.map((cat) => ({
     slug: cat.slug,
   }));
