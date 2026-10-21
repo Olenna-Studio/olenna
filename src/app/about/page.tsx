@@ -43,7 +43,7 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden shadow-md bg-brand-blush-100">
               <Image
-                src={assetPath("/images/hero/hero-model.webp")}
+                src={assetPath("/images/hero/olenna-hero-banner.webp")}
                 alt="Olenna Brand Narrative"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

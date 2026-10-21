@@ -61,13 +61,18 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={appliedClasses}
             target="_blank"
             rel="noopener noreferrer"
+            {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
           >
             {children}
           </a>
         );
       }
       return (
-        <Link href={href} className={appliedClasses}>
+        <Link
+          href={href}
+          className={appliedClasses}
+          {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+        >
           {children}
         </Link>
       );

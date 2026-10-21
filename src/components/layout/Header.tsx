@@ -7,6 +7,7 @@ import { Search, ArrowUpRight, ShoppingBag, X } from "lucide-react";
 import { SiteSettings } from "@/lib/models/settings";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
+import { useToast } from "@/components/ui/Toast";
 import { MobileNav } from "./MobileNav";
 
 interface HeaderProps {
@@ -16,6 +17,7 @@ interface HeaderProps {
 export function Header({ settings }: HeaderProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const { showComingSoon } = useToast();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -27,7 +29,10 @@ export function Header({ settings }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-brand-ivory-50/95 backdrop-blur-md border-b border-brand-plum-900/10 transition-shadow">
+    <header
+      className="sticky top-0 z-30 bg-[#FFFAF7] border-b border-brand-plum-900/10 transition-shadow"
+      style={{ backgroundColor: "#FFFAF7" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 sm:h-20">
           {/* Mobile hamburger navigation */}
@@ -84,6 +89,10 @@ export function Header({ settings }: HeaderProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Shop Online"
+              onClick={(e) => {
+                e.preventDefault();
+                showComingSoon();
+              }}
               className="md:hidden p-2 text-brand-plum-900 hover:text-brand-plum-700 rounded-full"
             >
               <ShoppingBag className="w-5 h-5 stroke-[1.75]" />
@@ -95,6 +104,10 @@ export function Header({ settings }: HeaderProps) {
               isExternal
               variant="primary"
               size="md"
+              onClick={(e) => {
+                e.preventDefault();
+                showComingSoon();
+              }}
               className="hidden md:inline-flex shadow-xs hover:shadow-md"
             >
               <span>{settings.customerPwaLabel}</span>

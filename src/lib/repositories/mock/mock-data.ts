@@ -177,7 +177,7 @@ export const MOCK_HOMEPAGE_CONTENT: HomepageContent = {
         primaryCtaUrl: "/#collections",
         secondaryCtaLabel: "Store Updates",
         secondaryCtaUrl: "/stores",
-        image: "/images/hero/hero-model.webp",
+        image: "/images/hero/olenna-hero-banner.webp",
         imageAlt: "Olenna Model in Elegant Pink Ethnic Wear",
       },
       {
@@ -190,7 +190,7 @@ export const MOCK_HOMEPAGE_CONTENT: HomepageContent = {
         primaryCtaUrl: "/collections/imitation-jewellery",
         secondaryCtaLabel: "Store Updates",
         secondaryCtaUrl: "/stores",
-        image: "/images/hero/hero-model.webp",
+        image: "/images/hero/olenna-hero-banner.webp",
         imageAlt: "Olenna Festive Glamour and Jewellery",
       },
       {
@@ -203,7 +203,7 @@ export const MOCK_HOMEPAGE_CONTENT: HomepageContent = {
         primaryCtaUrl: "/collections/tailoring-supplies",
         secondaryCtaLabel: "Store Updates",
         secondaryCtaUrl: "/stores",
-        image: "/images/hero/hero-model.webp",
+        image: "/images/hero/olenna-hero-banner.webp",
         imageAlt: "Olenna Tailoring & Design Studio",
       },
     ],

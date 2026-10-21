@@ -4,6 +4,7 @@ import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ToastProvider } from "@/components/ui/Toast";
 import { getSiteSettingsRepository, getSiteContentRepository } from "@/lib/repositories";
 
 const playfair = Playfair_Display({
@@ -81,10 +82,12 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${jakarta.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-brand-ivory-50 text-brand-text-primary selection:bg-brand-mauve-200 selection:text-brand-plum-950 font-sans">
-        <AnnouncementBar announcement={announcement} settings={settings} />
-        <Header settings={settings} />
-        <main className="flex-1">{children}</main>
-        <Footer settings={settings} />
+        <ToastProvider>
+          <AnnouncementBar announcement={announcement} settings={settings} />
+          <Header settings={settings} />
+          <main className="flex-1">{children}</main>
+          <Footer settings={settings} />
+        </ToastProvider>
       </body>
     </html>
   );

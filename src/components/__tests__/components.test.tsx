@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { CategoryCard } from "@/components/home/CategoryCard";
 import { StoreCard } from "@/components/stores/StoreCard";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+import { MobileNav } from "@/components/layout/MobileNav";
+import { ToastProvider, useToast } from "@/components/ui/Toast";
+import userEvent from "@testing-library/user-event";
 import { Category } from "@/lib/models/category";
 import { Store } from "@/lib/models/store";
 import { MOCK_SITE_SETTINGS } from "@/lib/repositories/mock/mock-data";
@@ -125,5 +128,87 @@ describe("AnnouncementBar component", () => {
       />
     );
     expect(container.firstChild).toBeNull();
+  });
+});
+
+describe("Toast and Shop Online coming-soon notification", () => {
+  function TestConsumer() {
+    const { showComingSoon } = useToast();
+    return (
+      <button onClick={() => showComingSoon()} type="button">
+        Trigger Coming Soon
+      </button>
+    );
+  }
+
+  it("shows coming soon toast when showComingSoon is invoked and hides on dismiss", async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider>
+        <TestConsumer />
+      </ToastProvider>
+    );
+
+    // Toast initially not present
+    expect(screen.queryByRole("alert")).toBeNull();
+
+    // Trigger toast
+    await user.click(screen.getByRole("button", { name: /trigger coming soon/i }));
+
+    expect(screen.getByRole("alert")).toBeInTheDocument();
+    expect(screen.getByText("Online Store Coming Soon")).toBeInTheDocument();
+    expect(
+      screen.getByText(/Our online shop will be available soon/i)
+    ).toBeInTheDocument();
+
+    // Dismiss toast
+    const closeBtn = screen.getByRole("button", { name: /close notification/i });
+    await user.click(closeBtn);
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("intercepts click on Shop Online links and presents coming soon toast", async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider>
+        <a href="https://shop.olenna.in" target="_blank" rel="noopener noreferrer">
+          Shop Online
+        </a>
+      </ToastProvider>
+    );
+
+    await user.click(screen.getByRole("link", { name: /shop online/i }));
+
+    expect(screen.getByRole("alert")).toBeInTheDocument();
+    expect(screen.getByText("Online Store Coming Soon")).toBeInTheDocument();
+  });
+});
+
+describe("MobileNav component", () => {
+  it("opens slide-out drawer with visible navigation links and solid background", async () => {
+    const user = userEvent.setup();
+    render(
+      <ToastProvider>
+        <MobileNav settings={MOCK_SITE_SETTINGS} />
+      </ToastProvider>
+    );
+
+    // Initial menu button
+    const openBtn = screen.getByRole("button", { name: /open menu/i });
+    expect(openBtn).toBeInTheDocument();
+
+    // Click to open
+    await user.click(openBtn);
+
+    // Navigation links should be visible in document body
+    expect(screen.getByRole("link", { name: /home/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /about/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /our store/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /contact/i })).toBeInTheDocument();
+
+    // Close button dismisses menu
+    const closeBtn = screen.getByRole("button", { name: /close navigation drawer/i });
+    await user.click(closeBtn);
+    expect(screen.queryByRole("link", { name: /home/i })).toBeNull();
   });
 });

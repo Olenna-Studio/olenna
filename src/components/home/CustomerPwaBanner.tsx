@@ -1,15 +1,20 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { CustomerPwaBannerContent } from "@/lib/models/content";
 import { Button } from "@/components/ui/Button";
 import { assetPath } from "@/lib/utils/assetPath";
+import { useToast } from "@/components/ui/Toast";
 
 interface CustomerPwaBannerProps {
   content: CustomerPwaBannerContent;
 }
 
 export function CustomerPwaBanner({ content }: CustomerPwaBannerProps) {
+  const { showComingSoon } = useToast();
+
   if (!content.isVisible) {
     return null;
   }
@@ -48,6 +53,10 @@ export function CustomerPwaBanner({ content }: CustomerPwaBannerProps) {
                   isExternal
                   variant="primary"
                   size="md"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    showComingSoon();
+                  }}
                   className="shadow-xs hover:shadow-md"
                 >
                   <span>{content.ctaLabel}</span>
