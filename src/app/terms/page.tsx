@@ -18,7 +18,7 @@ export default function TermsOfUsePage() {
         </h1>
         <div className="prose prose-brand text-brand-text-secondary text-sm sm:text-base space-y-6 leading-relaxed">
           <p>
-            Last Updated: June 2024
+            Last Updated: October 2026
           </p>
           <p>
             Welcome to the Olenna brand website. By accessing or browsing this website, you agree to comply with and be bound by the following terms of use.
