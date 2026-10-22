@@ -167,6 +167,7 @@ describe("Site Settings Repository", () => {
     expect(settings.customerPwaUrl).toMatch(/^https?:\/\//);
     expect(settings.mainNavigation.length).toBe(4);
     expect(settings.contactDetails.primaryEmail).toBe("olennastudiox@gmail.com");
+    expect(settings.contactDetails.technicalEmail).toBe("info@devhorizontech.com");
     expect(settings.contactDetails.phoneDisplay).toContain("9741424695");
   });
 });

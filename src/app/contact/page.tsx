@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Mail, Phone, MapPin, Clock, Compass } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Compass, Laptop } from "lucide-react";
 import { getSiteSettingsRepository, getStoreRepository } from "@/lib/repositories";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -61,6 +61,23 @@ export default async function ContactPage() {
                         className="hover:text-brand-plum-900 transition-colors"
                       >
                         {settings.contactDetails.primaryEmail}
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {settings.contactDetails.technicalEmail && (
+                  <div className="flex items-start gap-3">
+                    <Laptop className="w-5 h-5 text-brand-plum-700 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-medium text-brand-plum-900 text-xs uppercase tracking-wider">
+                        Technical Support & Web Inquiries
+                      </p>
+                      <a
+                        href={`mailto:${settings.contactDetails.technicalEmail}`}
+                        className="hover:text-brand-plum-900 transition-colors"
+                      >
+                        {settings.contactDetails.technicalEmail}
                       </a>
                     </div>
                   </div>

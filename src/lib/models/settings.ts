@@ -20,6 +20,7 @@ export const ContactDetailsSchema = z.object({
   primaryPhone: z.string(),
   phoneDisplay: z.string(),
   primaryEmail: z.string().email(),
+  technicalEmail: z.string().email().optional(),
   supportHours: z.string(),
   headquartersAddress: z.string(),
   isVerified: z.boolean().default(false),
