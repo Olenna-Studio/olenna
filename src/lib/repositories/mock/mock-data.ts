@@ -289,7 +289,7 @@ export const MOCK_SITE_SETTINGS: SiteSettings = {
     primaryPhone: "+919741424695",
     phoneDisplay: "9741424695 | 08754443777",
     primaryEmail: "olennastudiox@gmail.com",
-    technicalEmail: "info@devhorizontech.com",
+    technicalEmail: "support@devhorizontech.com",
     supportHours: "Monday to Sunday, 10:00 AM – 10:00 PM IST",
     headquartersAddress:
       "Rajajinagar, Bangalore, Karnataka, India",

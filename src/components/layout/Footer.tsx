@@ -171,7 +171,7 @@ export function Footer({ settings }: FooterProps) {
         </div>
 
         <p className="pt-4 text-center text-xs text-brand-text-muted">
-          Developed By <a href="https://www.devhorizontech.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-plum-900 transition-colors">DevHorizon Technologies Private Limited</a> | Tech Support: <a href="mailto:info@devhorizontech.com" className="hover:text-brand-plum-900 transition-colors">info@devhorizontech.com</a> | Visit Us <a href="https://www.devhorizontech.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-plum-900 transition-colors">www.devhorizontech.com</a>
+          Developed By <a href="https://www.devhorizontech.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-plum-900 transition-colors">DevHorizon Technologies Private Limited</a> | Tech Support: <a href="mailto:support@devhorizontech.com" className="hover:text-brand-plum-900 transition-colors">support@devhorizontech.com</a> | Visit Us <a href="https://www.devhorizontech.com" target="_blank" rel="noopener noreferrer" className="hover:text-brand-plum-900 transition-colors">www.devhorizontech.com</a>
         </p>
       </div>
     </footer>
